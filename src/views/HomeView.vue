@@ -425,10 +425,6 @@ main {
     color: #000000;
   }
 
-  .dropdown-content button:hover {
-    background-color: #F2F2F2;
-  }
-
   .country-wrapper {
     margin-left: 2rem;
     margin-right: 2rem;
