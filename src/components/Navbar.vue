@@ -32,6 +32,8 @@ const isDarkMode = ref(store.state.isDarkMode);
 </script>
   
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900;1,6..12,1000&display=swap');
+
 header {
     display: flex;
     justify-content: space-between;
@@ -50,8 +52,7 @@ header {
 }
 
 .title h1 {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 800;
+    font-weight: 700;
     font-size: 1.5rem;
     color: black;
 }
@@ -78,8 +79,7 @@ header {
 }
 
 .theme p {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1.2rem;
     color: black;
 }

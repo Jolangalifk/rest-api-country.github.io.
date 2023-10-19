@@ -52,6 +52,10 @@ const searchResults = computed(() => {
   );
 });
 
+const formatPopulation = (population) => {
+  return population.toLocaleString('en-IN', { maximumSignificantDigits: 3 });
+};
+
 onMounted(() => {
   selectedRegion.value = null;
   handleDarkModeChange();
@@ -96,12 +100,11 @@ onMounted(() => {
               <h2 :style="{ color: isDarkMode ? 'white' : 'black' }">{{ country.name }}</h2>
               <div class="country-info-wrapper">
                 <div class="country-info-left">
-                  <p :style="{ color: isDarkMode ? 'white' : 'black' }">Population: <span
-                      :style="{ color: isDarkMode ? 'white' : 'black' }">{{ country.population }}</span></p>
-                  <p :style="{ color: isDarkMode ? 'white' : 'black' }">Region: <span
-                      :style="{ color: isDarkMode ? 'white' : 'black' }">{{ country.region }}</span></p>
-                  <p :style="{ color: isDarkMode ? 'white' : 'black' }">Capital: <span
-                      :style="{ color: isDarkMode ? 'white' : 'black' }">{{ country.capital }}</span></p>
+                  <p :style="{ color: isDarkMode ? 'white' : 'black' }">
+                    Population: <span :style="{ color: isDarkMode ? 'white' : 'black' }">{{ formatPopulation(country.population) }}</span>
+                  </p>
+                  <p :style="{ color: isDarkMode ? 'white' : 'black' }">Region: <span :style="{ color: isDarkMode ? 'white' : 'black' }">{{ country.region }}</span></p>
+                  <p :style="{ color: isDarkMode ? 'white' : 'black' }">Capital: <span :style="{ color: isDarkMode ? 'white' : 'black' }">{{ country.capital }}</span></p>
                 </div>
               </div>
             </div>
@@ -113,7 +116,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900;1,6..12,1000&display=swap');
 
 * {
   margin: 0;
@@ -189,8 +192,7 @@ main {
 }
 
 .search input::placeholder {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 1rem;
   color: #8A8A8A;
 }
@@ -225,8 +227,7 @@ main {
 }
 
 .filter-btn p {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 1rem;
   color: #000;
 }
@@ -257,8 +258,7 @@ main {
   border: none;
   outline: none;
   cursor: pointer;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 1rem;
   color: #000000;
   display: flex;
@@ -315,8 +315,7 @@ main {
 }
 
 .country-info h2 {
-  font-family: 'Raleway', sans-serif;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1.2rem;
   margin-bottom: 1rem;
   color: #000;
@@ -338,16 +337,14 @@ main {
 }
 
 .country-info-left p {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.9rem;
   color: #000;
   margin-bottom: 0.5rem;
 }
 
 .country-info-left p span {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 0.9rem;
   color: #000;
 }
@@ -410,7 +407,6 @@ main {
     border: none;
     outline: none;
     cursor: pointer;
-    font-family: 'Raleway', sans-serif;
     font-weight: 500;
     font-size: 1rem;
     color: #000000;

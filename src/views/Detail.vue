@@ -1,14 +1,15 @@
 <script setup>
 import { useStore } from 'vuex';
 import Navbar from '@/components/Navbar.vue';
+import dataJson from '@/assets/api/data.json'; 
 import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import darkModeBack from '@/assets/icon/arrow-back-dark.svg';
 import lightModeBack from '@/assets/icon/arrow-back.svg';
 
 const route = useRouter();
-const countryIndex = ref(null); 
-const jsonData = ref(null);
+const countryIndex = ref(null);
+const jsonData = ref(dataJson); 
 const countryData = ref(null);
 const store = useStore();
 const isDarkMode = computed(() => store.state.isDarkMode);
@@ -18,33 +19,22 @@ const handleDarkModeChange = () => {
 };
 
 onMounted(async () => {
-    const { index } = route.currentRoute.value.params; 
-    countryIndex.value = parseInt(index); 
+  const { index } = route.currentRoute.value.params;
+  countryIndex.value = parseInt(index);
 
-    try {
-        const response = await fetch('/src/assets/api/data.json');
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        jsonData.value = data;
-
-        if (jsonData.value) {
-            if (countryIndex.value >= 0 && countryIndex.value < jsonData.value.length) {
-                countryData.value = jsonData.value[countryIndex.value];
-            } else {
-                console.error('Invalid country index');
-            }
-        } else {
-            console.error('JSON data is not available');
-        }
-    } catch (error) {
-        console.error('There has been a problem with your JSON data request:', error);
+  if (jsonData.value) {
+    if (countryIndex.value >= 0 && countryIndex.value < jsonData.value.length) {
+      countryData.value = jsonData.value[countryIndex.value];
+    } else {
+      console.error('Invalid country index');
     }
+  } else {
+    console.error('JSON data is not available');
+  }
 });
 
 onMounted(() => {
-    handleDarkModeChange();
+  handleDarkModeChange();
 });
 </script>
 
@@ -100,6 +90,8 @@ onMounted(() => {
 
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900;1,6..12,1000&display=swap');
+
 body {
     background-color: white;
 }
@@ -138,8 +130,7 @@ a {
 }
 
 .btn-back button a {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 1rem;
     color: #000;
 }
@@ -196,7 +187,6 @@ a {
 }
 
 .country-info h2 {
-    font-family: 'Raleway', sans-serif;
     font-weight: bold;
     font-size: 1.5rem;
     margin-bottom: 1rem;
@@ -219,16 +209,14 @@ a {
 }
 
 .country-info-left p {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 0.9rem;
     color: #000;
     margin-bottom: 0.5rem;
 }
 
 .country-info-left p span {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 0.9rem;
     color: #000;
 }
@@ -241,16 +229,14 @@ a {
 }
 
 .country-info-right p {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 0.9rem;
     color: #000;
     margin-bottom: 0.5rem;
 }
 
 .country-info-right p span {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 0.9rem;
     color: #000;
 }
@@ -263,8 +249,7 @@ a {
 }
 
 .country-border p {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 0.9rem;
     color: #000;
 }
@@ -282,9 +267,8 @@ a {
 }
 
 .country-border .borders-span span {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 500;
-    font-size: 0.9rem;
+    font-weight: 400;
+    font-size: 0.8rem;
     color: #000;
 }
 
@@ -331,7 +315,6 @@ a {
     }
 
     .country-info h2 {
-        font-family: 'Raleway', sans-serif;
         font-weight: bold;
         font-size: 1.5rem;
         margin-bottom: 2rem;
@@ -355,7 +338,6 @@ a {
     }
 
     .country-info-left p {
-        font-family: 'Raleway', sans-serif;
         font-weight: 600;
         font-size: 0.9rem;
         color: #000;
@@ -363,7 +345,6 @@ a {
     }
 
     .country-info-left p span {
-        font-family: 'Raleway', sans-serif;
         font-weight: 500;
         font-size: 0.9rem;
         color: #000;
@@ -378,7 +359,6 @@ a {
     }
 
     .country-info-right p {
-        font-family: 'Raleway', sans-serif;
         font-weight: 600;
         font-size: 0.9rem;
         color: #000;
@@ -386,7 +366,6 @@ a {
     }
 
     .country-info-right p span {
-        font-family: 'Raleway', sans-serif;
         font-weight: 500;
         font-size: 0.9rem;
         color: #000;
@@ -399,7 +378,6 @@ a {
 
     .country-border p {
         width: 100%;
-        font-family: 'Raleway', sans-serif;
         font-weight: 600;
         font-size: 1rem;
         color: #000;
