@@ -75,10 +75,12 @@ onMounted(() => {
                         </div>
                         <div class="country-border" v-if="countryData.borders && countryData.borders.length > 0">
                             <p :style="{ color: isDarkMode ? 'white' : 'black' }">Border Countries: </p>
-                            <div :style="{ background: isDarkMode ? '#2B3743' : 'white' }" class="borders-span">
-                                <span :style="{ color: isDarkMode ? 'white' : 'black' }" v-for="(border, index) in countryData.borders" :key="index">
-                                    {{ border }}{{ index < countryData.borders.length - 1 ? ', ' : '' }}
-                                </span>
+                            <div  class="border-wp">
+                                <div :style="{ background: isDarkMode ? '#2B3743' : 'white' }" v-for="(border, index) in countryData.borders.slice(0, 4)" :key="index" class="borders-span">
+                                  <span :style="{ color: isDarkMode ? 'white' : 'black' }">
+                                    {{ border }}
+                                  </span>
+                                </div>
                             </div>
                         </div>                                               
                     </div>
@@ -254,6 +256,11 @@ a {
     color: #000;
 }
 
+.border-wp {
+    display: flex;
+    align-items: center;
+}
+
 .country-border .borders-span {
     width: fit-content;
     height: 30px;
@@ -263,7 +270,7 @@ a {
     padding: 1rem;
     border-radius: 5px;
     box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
-    border: 1px solid rgba(99, 99, 99, 0.1);
+    border: 1px solid rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
 }
 
 .country-border .borders-span span {
@@ -295,7 +302,7 @@ a {
 
     .country-image {
         width: 100%;
-        height: 100%;
+        height: 200px;
         border: 1px solid rgba(99, 99, 99, 0.1);
     }
 
@@ -338,14 +345,14 @@ a {
     }
 
     .country-info-left p {
-        font-weight: 600;
+        font-weight: 500;
         font-size: 0.9rem;
         color: #000;
         margin-bottom: 1rem;
     }
 
     .country-info-left p span {
-        font-weight: 500;
+        font-weight: 400;
         font-size: 0.9rem;
         color: #000;
     }
@@ -359,14 +366,14 @@ a {
     }
 
     .country-info-right p {
-        font-weight: 600;
+        font-weight: 500;
         font-size: 0.9rem;
         color: #000;
         margin-bottom: 1rem;
     }
 
     .country-info-right p span {
-        font-weight: 500;
+        font-weight: 400;
         font-size: 0.9rem;
         color: #000;
     }
@@ -384,18 +391,156 @@ a {
         margin-bottom: 1rem;
     }
 
-    .country-border .borders-span {
+    .border-wp {
         width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .country-border .borders-span {
+        width: 70px;
         height: fit-content;
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
         align-items: center;
         margin-left: 0;
+        margin-right: 1rem;
+        padding: 1rem;
+        padding-left: 1.4rem;
+        border-radius: 5px;
+        box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
+        border: 1px solid rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    main {
+        padding: 2rem;
+    }
+
+    .btn-back {
+        width: 15%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .country {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin: 2rem 0rem;
+    }
+
+    .country-image {
+        width: 100%;
+        height: 400px;
+        border: 1px solid rgba(99, 99, 99, 0.1);
+    }
+
+    .country-image img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .country-info {
+        width: 100%;
+        height: 100%;
+        padding: 0rem;
+        padding-top: 2rem;
+        margin-bottom: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .country-info h2 {
+        font-weight: bold;
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        color: #000;
+    }
+
+    .country-info-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .country-info-left {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .country-info-left p {
+        font-weight: 500;
+        font-size: 0.9rem;
+        color: #000;
+        margin-bottom: 1rem;
+    }
+
+    .country-info-left p span {
+        font-weight: 400;
+        font-size: 0.9rem;
+        color: #000;
+    }
+
+    .country-info-right {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .country-info-right p {
+        font-weight: 500;
+        font-size: 0.9rem;
+        color: #000;
+        margin-bottom: 1rem;
+    }
+
+    .country-info-right p span {
+        font-weight: 400;
+        font-size: 0.9rem;
+        color: #000;
+    }
+
+    .country-border {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .country-border p {
+        width: 100%;
+        font-weight: 600;
+        font-size: 1rem;
+        color: #000;
+        margin-bottom: 1rem;
+    }
+
+    .border-wp {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    
+    .country-border .borders-span {
+        width: fit-content;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        margin-left: 0rem;
+        margin-right: 1rem;
         padding: 1rem;
         border-radius: 5px;
         box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
-        border: 1px solid rgba(99, 99, 99, 0.1);
     }
+
 }
 </style>

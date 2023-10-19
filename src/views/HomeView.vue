@@ -101,10 +101,13 @@ onMounted(() => {
               <div class="country-info-wrapper">
                 <div class="country-info-left">
                   <p :style="{ color: isDarkMode ? 'white' : 'black' }">
-                    Population: <span :style="{ color: isDarkMode ? 'white' : 'black' }">{{ formatPopulation(country.population) }}</span>
+                    Population: <span :style="{ color: isDarkMode ? 'white' : 'black' }">{{
+                      formatPopulation(country.population) }}</span>
                   </p>
-                  <p :style="{ color: isDarkMode ? 'white' : 'black' }">Region: <span :style="{ color: isDarkMode ? 'white' : 'black' }">{{ country.region }}</span></p>
-                  <p :style="{ color: isDarkMode ? 'white' : 'black' }">Capital: <span :style="{ color: isDarkMode ? 'white' : 'black' }">{{ country.capital }}</span></p>
+                  <p :style="{ color: isDarkMode ? 'white' : 'black' }">Region: <span
+                      :style="{ color: isDarkMode ? 'white' : 'black' }">{{ country.region }}</span></p>
+                  <p :style="{ color: isDarkMode ? 'white' : 'black' }">Capital: <span
+                      :style="{ color: isDarkMode ? 'white' : 'black' }">{{ country.capital }}</span></p>
                 </div>
               </div>
             </div>
@@ -126,7 +129,7 @@ onMounted(() => {
 }
 
 body {
-  background-color: white;
+  background-color: #FAFAFA;
 }
 
 .dark-background {
@@ -349,7 +352,7 @@ main {
   color: #000;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767.98px) {
   .navigation {
     display: flex;
     flex-direction: column;
@@ -362,7 +365,8 @@ main {
     width: 100%;
     height: 70px;
     padding: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    margin-top: 0.5rem;
   }
 
   .search input {
@@ -373,20 +377,29 @@ main {
     width: 50%;
     height: 70px;
     padding: 1rem;
-    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
   }
 
   .filter-btn {
-    width: 100%;
+    width: 140px;
     height: 2rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  .filter-btn p {
+    font-weight: 400;
+    font-size: 1rem;
+    color: #000;
   }
 
   .filter-btn img {
     width: 0.7rem;
-    margin-left: 0.5rem;
-    position: relative;
+    height: 0.7rem;
   }
 
   .dropdown {
@@ -426,5 +439,88 @@ main {
     width: calc(100% - 1rem);
     height: fit-content;
     margin-bottom: 1rem;
+    background-color: transparent;
   }
-}</style>
+
+  .country-image {
+    width: 100%;
+    height: 170px;
+    border-radius: 5px 5px 0px 0px;
+  }
+
+  .country-image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px 5px 0px 0px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .navigation {
+    display: flex;
+    flex-direction: row;
+    padding: 2rem;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .search {
+    width: 50%;
+    height: 70px;
+    padding: 1rem;
+  }
+
+  .search input {
+    margin-left: 1rem;
+  }
+
+  .filter {
+    width: 30%;
+    height: 70px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .country-wrapper {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding: 1rem;
+  }
+
+  .country {
+    width: calc(50% - 1rem);
+    height: fit-content;
+    margin-bottom: 1rem;
+    background-color: transparent;
+  }
+
+  .country-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px 5px 0px 0px;
+  }
+
+  .country-image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px 5px 0px 0px;
+  }
+
+  .country-info {
+    width: 100%;
+    height: 50%;
+    padding: 1rem;
+    margin-bottom: 0;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px 0px 5px 5px;
+  }
+
+}
+</style>

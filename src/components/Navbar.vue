@@ -127,4 +127,35 @@ header {
     }
 
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    header {
+        padding: 2rem;
+    }
+
+    .title h1 {
+        font-size: 1.2rem;
+    }
+
+    .theme {
+        width: 17%;
+    }
+
+    .theme p {
+        font-size: 1rem;
+    }
+
+    .theme-image {
+        width: 1.3rem;
+        height: 1.3rem;
+    }
+
+    .theme-image img {
+        width: 100%;
+        height: 100%;
+    }
+
+
+}
 </style>
